@@ -1,10 +1,13 @@
 var player1 = prompt("player 1, Enter your Name, Your color will be blue");
-var player1Color = 'rgb(86, 151, 255)';
+var player1Color = 'rgb(56, 132, 241)';
 
 var player2 = prompt("player 2, Enter your Name, Your color will be red");
-var player2Color = 'rgb(237, 45, 73)';
+var player2Color = 'rgb(229, 25, 63)';
 
 var table = $('table tr');
+
+let drop = new Audio('drop.wav');
+let win = new Audio('win.wav');
 
 // function to change color of a cell
 function changeColor(rowIndex,colIndex,color){
@@ -76,14 +79,25 @@ function diagonalWinCheck(){
 
 // Game logic 
 var game_on = true;
+
+if(player1 === null || player1 === ""){
+    player1 = 'Player 1';
+}
+
+if(player2 === null || player2 === ""){
+    player2 = 'Player 2';
+}
+
 var currentPlayer = 1;
 var currentName = player1;
 var currentColor = player1Color;
 
 $('h3').text(player1 + ", it is your turn");
+$('h3').css('color',currentColor);
 
 $('.board button').on('click', function(){
     if(game_on){
+        drop.play();
         var col = $(this).closest('td').index();
 
         var bottomAvail = checkBottom(col);
@@ -91,7 +105,8 @@ $('.board button').on('click', function(){
         changeColor(bottomAvail, col, currentColor);
 
         if(horizontalWinCheck() || verticalWinCheck() || diagonalWinCheck()){
-            $('h1').text(currentName+", You have won!");
+            $('h1').text("🎉🎉 Congratulations "+currentName+", You have won!🎉🎉");
+            win.play();
             $('h2').fadeOut('fast');
             $('h3').fadeOut('fast');
             game_on = false;
@@ -101,12 +116,14 @@ $('.board button').on('click', function(){
         currentPlayer = (currentPlayer)*(-1);
         if(currentPlayer === 1){
             currentName = player1;
-            $('h3').text(currentName+" it is your turn");
+            $('h3').text(currentName+", it is your turn");
             currentColor = player1Color;
+            $('h3').css('color',currentColor);
         }else if(currentPlayer === -1){
             currentName = player2;
-            $('h3').text(currentName+" it is your turn");
+            $('h3').text(currentName+", it is your turn");
             currentColor = player2Color;
+            $('h3').css('color',currentColor);
         }
     }   
 })
