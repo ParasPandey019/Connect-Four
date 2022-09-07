@@ -37,7 +37,6 @@ function horizontalWinCheck(){
     for(var row = 0; row < 6; row++){
         for(var col = 0; col < 4; col++){
             if(colorMatchCheck(returnColor(row,col), returnColor(row,col+1), returnColor(row,col+2), returnColor(row,col+3))){
-                console.log('horizontal');
                 return true;
             }else{
                 continue;
@@ -51,7 +50,6 @@ function verticalWinCheck(){
     for(var col = 0; col < 7; col++){
         for(var row = 0; row < 3; row++){
             if(colorMatchCheck(returnColor(row,col), returnColor(row+1,col), returnColor(row+2,col), returnColor(row+3,col))){
-                console.log('vertical');
                 return true;
             }else{
                 continue;
@@ -65,10 +63,8 @@ function diagonalWinCheck(){
     for(var col = 0; col < 5; col++){
         for(var row = 0; row < 7; row++){
             if(colorMatchCheck(returnColor(row,col), returnColor(row+1,col+1), returnColor(row+2,col+2), returnColor(row+3,col+3))){
-                console.log('diagonal');
                 return true;
             }else if(colorMatchCheck(returnColor(row,col), returnColor(row-1,col+1), returnColor(row-2,col+2), returnColor(row-3,col+3))){
-                console.log('diagonal');
                 return true;
             }else{
                 continue;
@@ -99,6 +95,7 @@ $('.board button').on('click', function(){
             $('h2').fadeOut('fast');
             $('h3').fadeOut('fast');
             game_on = false;
+            $('.reloadPage').css('display','inline');
         }
 
         currentPlayer = (currentPlayer)*(-1);
@@ -114,3 +111,6 @@ $('.board button').on('click', function(){
     }   
 })
 
+$('.reloadPage').on('click', function(){
+    window.location.reload();
+})
