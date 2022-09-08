@@ -1,13 +1,14 @@
-var player1 = prompt("player 1, Enter your Name, Your color will be blue");
-var player1Color = 'rgb(56, 132, 241)';
+var player1 = prompt("player 1, Enter your Name, Your color will be yellow");
+var player1Color = 'rgb(215, 198, 12)';
 
 var player2 = prompt("player 2, Enter your Name, Your color will be red");
 var player2Color = 'rgb(229, 25, 63)';
 
 var table = $('table tr');
 
-let drop = new Audio('drop.wav');
-let win = new Audio('win.wav');
+let drop = new Audio('/soundEffects/drop.mp3');
+drop.volume = 0.2;
+let win = new Audio('/soundEffects/win.wav');
 
 // function to change color of a cell
 function changeColor(rowIndex,colIndex,color){
@@ -105,7 +106,7 @@ $('.board button').on('click', function(){
         changeColor(bottomAvail, col, currentColor);
 
         if(horizontalWinCheck() || verticalWinCheck() || diagonalWinCheck()){
-            $('h1').text("🎉🎉 Congratulations "+currentName+", You have won!🎉🎉");
+            $('h1').text("🎉 Congratulations "+currentName+", You have won!🎉");
             win.play();
             $('h2').fadeOut('fast');
             $('h3').fadeOut('fast');
