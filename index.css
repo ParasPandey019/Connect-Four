@@ -4,7 +4,7 @@
      background-color: gray;
      margin: 3px;
      border-radius: 50%;
-     border: 4px solid gray;
+     border: 4px solid linear-gradient(90deg, rgb(23, 22, 30) 0%, rgb(27, 17, 35) 66%, rgba(5,0,8,1) 91%);
 }
 
 .container{
