@@ -1,7 +1,7 @@
-var player1 = prompt("player 1, Enter your Name, Your color will be yellow");
+var player1 = 'Player 1';
 var player1Color = 'rgb(215, 198, 12)';
 
-var player2 = prompt("player 2, Enter your Name, Your color will be red");
+var player2 = 'Player 2';
 var player2Color = 'rgb(229, 25, 63)';
 
 var table = $('table tr');
@@ -81,13 +81,6 @@ function diagonalWinCheck(){
 // Game logic 
 var game_on = true;
 
-if(player1 === null || player1 === ""){
-    player1 = 'Player 1';
-}
-
-if(player2 === null || player2 === ""){
-    player2 = 'Player 2';
-}
 
 var currentPlayer = 1;
 var currentName = player1;
